@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AlignPath: a career advisor to find your best fit</title>
+<meta name="description" content="">
+<meta name="robots" content="noindex">
+<!--
+  SMOKE-TEST LANDING PAGE TEMPLATE (v3: per-idea look and optional hero image; Google Analytics 4 + Contentsquare/Hotjar + Formspree)
+  One file, no build step. Everything that changes per idea lives in the SPEC object below.
+  To make a page for a new idea: replace SPEC, set <title>, upload the file.
+  Sections with enabled:false are not rendered. Every interactive element pushes an event
+  to Google Analytics (and key ones to Contentsquare, formerly Hotjar) carrying idea_id, run and (where set) assumption_id.
+-->
+<script>
+const SPEC = {
+  meta: {
+    ideaId: "ET-5",
+    run: 1,
+    concept: "AlignPath",
+    title: "AlignPath: a career advisor to find your best fit",
+    description: "AlignPath helps you find work that uses your strengths, that you'll enjoy, and that gives you what you need right now, then supports you as you make the change."
+  },
+  theme: {
+    accent: "#2F7D6D",
+    text: "#13302B",
+    tint: "#EFE8DD",
+    headingFont: "DM Sans",
+    bodyFont: "DM Sans",
+    monoFont: "DM Mono",
+    serifFont: "Instrument Serif"
+  },
+  tracking: {
+    ga4Id: "G-7HBHT4F2PK",
+    csqTagId: "5d063e84c32b0",
+    consent: "notice"
+  },
+  hero: {
+    eyebrow: "For early-career professionals at a crossroads",
+    headline: "Unsure which career is your *best fit?*",
+    subheadline: "AlignPath helps you find work that uses your strengths, that you'll enjoy, and that gives you what you need right now, then supports you as you make the change.",
+    cta: "Get early access",
+    ctaTarget: "form",
+    note: "Launching soon. Free to join the list.",
+    image: { url: "", alt: "" },
+    video: { mp4: "hero-bg-1280.mp4", webm: "hero-bg-1280.webm", mobileMp4: "hero-bg-480.mp4", mobileWebm: "hero-bg-480.webm", poster: "hero-bg-poster.jpg", position: "60% 50%", mobilePosition: "72% 50%" },
+    scrollCue: "Scroll",
+    assumptionId: ""
+  },
+  problem: {
+    enabled: true,
+    kicker: "The problem",
+    heading: "It isn't indecision. It's *two blind spots.*",
+    intro: "You can't see clearly what you're best at and what you want, and you can only see a handful of the roles open to someone like you. We help you see both. Tap the ones that sound like you.",
+    mode: "selector",
+    items: [
+      { id: "self", text: "I can't decide what to pursue, because I'm not sure what I'm really good at or what I'd enjoy" },
+      { id: "roles", text: "I don't know enough about other roles to choose one: what the work is really like, what it pays, or whether I'd get in" },
+      { id: "familiar", text: "I apply to whatever is close to what I do now, because a different role feels like starting over" },
+      { id: "advice", text: "Everyone gives me different advice, and none of it is based on my situation" }
+    ],
+    assumptionId: ""
+  },
+  how: {
+    enabled: true,
+    kicker: "The process",
+    heading: "How it *works*",
+    steps: [
+      { title: "Get to know yourself", text: "A guided conversation about your experience, what you enjoy and what drains you. AlignPath turns it into a clear profile of your strengths, interests and priorities, so every suggestion after this is based on your situation, not general advice." },
+      { title: "See the options that fit you best", text: "A shortlist of roles and fields that match your profile, including ones you hadn't considered. For each one: what the work is like day to day, what it pays, and whether your experience would get you in." },
+      { title: "Make the change, step by step", text: "A plan for the next few months: which roles to apply to and why, help tailoring each application, and regular check-ins to adjust when something doesn't work out." }
+    ]
+  },
+  bridge: {
+    enabled: true,
+    text: "Wherever you're stuck, that's where we'll start.",
+    cta: "Get early access"
+  },
+  features: {
+    enabled: true,
+    kicker: "What you get",
+    heading: "How AlignPath adds value *for you*",
+    items: [
+      { id: "clarity", title: "Clarity you can act on", summary: "Know your strengths and what you want, instead of hoping the answer shows up on its own.", detail: "A guided conversation about your experience, what you enjoy and what drains you, turned into a clear profile of your strengths, interests and priorities.", assumptionId: "" },
+      { id: "research", title: "Hours of research, replaced", summary: "No more decoding job descriptions and scrolling LinkedIn profiles to guess what a role involves.", detail: "A shortlist of roles and fields that match your profile, each with what the work is like day to day, what it pays, and whether your experience would get you in.", assumptionId: "" },
+      { id: "applications", title: "Fewer applications, more conviction", summary: "Send applications you believe in, with help tailoring each one, instead of dozens sent out of habit.", detail: "A plan for which roles to apply to and why, with help tailoring each application around why you're a strong match.", assumptionId: "" },
+      { id: "support", title: "Someone in your corner", summary: "Guidance that remembers what you've tried and helps you adjust, so you're not deciding alone.", detail: "Regular check-ins that keep track of what you've tried, so you can adjust when something doesn't work out or your priorities change.", assumptionId: "" }
+    ]
+  },
+  benefits: {
+    enabled: false,
+    heading: "",
+    items: []
+  },
+  pricing: {
+    enabled: false,
+    heading: "",
+    note: "",
+    tiers: [],
+    assumptionId: ""
+  },
+  form: {
+    enabled: true,
+    kicker: "Early access",
+    heading: "Ready to find your *best fit?*",
+    line: "You don't need to know what you want yet. That's what we're here for.",
+    formspreeId: "xdeagzgq",
+    emailLabel: "Your email",
+    emailPlaceholder: "you@example.com",
+    cta: "Get my early access",
+    micro: "Free. No spam. Takes 10 seconds.",
+    consentLine: "By signing up you agree to be contacted about AlignPath. You can ask us to delete your details at any time.",
+    errorText: "Something went wrong and your details were not saved. Please try again.",
+    followUp: {
+      heading: "You're on the list.",
+      intro: "Help us shape it around you: 3 quick taps (optional).",
+      questions: [
+        { name: "experience", label: "Years of experience", type: "chips", options: ["Less than 1 year", "1\u20133 years", "3\u20136 years", "6+ years"] },
+        { name: "role", label: "Current role (optional)", type: "text", placeholder: "e.g. analyst at a fintech" },
+        { name: "current_tool", label: "Who do you turn to for career advice?", type: "chips", multi: true, options: ["ChatGPT", "Mentors or seniors", "Family or friends", "A paid counsellor", "No one yet"] },
+        { name: "timing", label: "When are you planning a change?", type: "chips", options: ["Now", "In the next 3 months", "Just exploring"] }
+      ],
+      done: "Done",
+      skip: "Skip",
+      thanksHeading: "Thanks, that helps.",
+      thanksText: "We'll email you when early access opens."
+    },
+    assumptionId: ""
+  },
+  faq: {
+    enabled: true,
+    kicker: "FAQ",
+    heading: "*Questions*",
+    items: [
+      { q: "Is this available now?", a: "Not yet. We're inviting early users before launch. Joining the list is free and you won't be charged." },
+      { q: "Is this a job board?", a: "No. It doesn't list jobs. It helps you work out which career is your best fit and why, and supports you while you go after it." },
+      { q: "Can't I just ask ChatGPT?", a: "ChatGPT answers the questions you think to ask. AlignPath starts from your situation, asks the questions a good advisor would, and remembers what you decided." },
+      { q: "Does it replace people I trust?", a: "No. Use it to think clearly before you talk to them. Big decisions still deserve a conversation with people who know you." }
+    ]
+  },
+  notLive: {
+    heading: "{tier} isn't live yet",
+    text: "You won't be charged.",
+    cta: "Get early access"
+  },
+  thanks: {
+    heading: "You're on the list",
+    text: "Thanks. We'll be in touch when early access opens."
+  },
+  footer: {
+    company: "AlignPath",
+    contact: "talk@withcareventures.com",
+    privacy: "This page uses analytics to understand how visitors use it, including anonymised session recordings. If you sign up, we store the details you give us so we can contact you about AlignPath. Ask us to see or delete your data at any time."
+  }
+};
+</script>
+<style>
+:root{--accent:#2F7D6D;--ink:#13302B;--muted:#53625E;--line:#E2D9CB;--bg:#F8F5EF;--soft:#EFE8DD;--card:#FFFDF9;--amber:#F2B544;--radius:20px;--mono:ui-monospace,SFMono-Regular,Menlo,monospace;--sfont:Georgia,"Times New Roman",serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body.bfont{font-family:var(--bfont),system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+h1,h2,h3{margin:0;color:var(--ink);text-wrap:balance;font-family:var(--hfont,inherit)}
+h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:400;line-height:1.02;letter-spacing:-.045em}
+h2{font-size:clamp(2rem,4.6vw,3.1rem);font-weight:400;line-height:1.08;letter-spacing:-.035em}
+h3{font-size:1.12rem;font-weight:500;line-height:1.35;letter-spacing:-.01em}
+.serif{font-family:var(--sfont);font-style:italic;font-weight:400;letter-spacing:-.01em;font-size:1.06em}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:112px 0;scroll-margin-top:72px}
+section.alt{background:var(--soft)}
+.sec-head{max-width:640px;margin-bottom:48px}
+.sec-head p{color:var(--muted);margin-top:18px;font-size:1.1rem}
+.kicker,.eyebrow,.idx{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+.kicker{display:flex;gap:14px;align-items:center;margin-bottom:20px;color:var(--muted)}
+.kicker .n{opacity:.7}
+.kicker .n::after{content:"";display:inline-block;width:28px;height:1px;background:currentColor;opacity:.4;vertical-align:middle;margin-left:14px}
+.idx{color:var(--accent)}
+
+/* header: transparent over the hero video, solid once you scroll */
+.top{position:fixed;left:0;right:0;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:background .35s,border-color .35s}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.brand{font-weight:500;font-size:1.2rem;letter-spacing:-.03em;transition:color .35s}
+.top.over{background:transparent;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.top.over .brand{color:#fff}
+.top.over .btn.sm{background:var(--amber);color:var(--ink)}
+.progress{position:absolute;left:0;top:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(var(--p,0));background:var(--amber)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;font:inherit;font-weight:500;font-size:1rem;background:var(--ink);color:#fff;padding:15px 28px;border-radius:999px;text-decoration:none;transition:background .2s,transform .05s}
+.btn:not(.ghost)::after{content:"\2192";transition:transform .2s}
+.btn:hover{background:color-mix(in srgb,var(--ink) 82%,var(--accent))}
+.btn:hover::after{transform:translateX(3px)}
+.btn:active{transform:translateY(1px)}
+.btn:disabled{opacity:.6;cursor:wait}
+.btn:focus-visible,summary:focus-visible,input:focus-visible,.row-item:focus-visible,.textlink:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn.sm{padding:10px 18px;font-size:.9rem}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn.block{display:flex;width:100%;justify-content:center}
+.btn.amber{background:var(--amber);color:var(--ink);font-weight:700}
+.btn.amber:hover{background:#F5C163}
+.btn.lg{font-size:1.08rem;padding:18px 32px}
+
+/* hero: full-bleed video under a deep green shade */
+.hero{position:relative;min-height:min(100svh,920px);display:flex;align-items:center;padding:150px 0 130px;background:var(--ink);overflow:hidden}
+.hero .bg{position:absolute;inset:0;z-index:0}
+.hero .bg video,.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,60% 50%);display:block}
+.hero .shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(19,48,43,.94) 0%,rgba(19,48,43,.8) 38%,rgba(19,48,43,.42) 75%,rgba(19,48,43,.3) 100%),linear-gradient(0deg,rgba(19,48,43,.7) 0%,rgba(19,48,43,0) 40%)}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero .inner{max-width:760px}
+.hero h1{color:#fff}
+.hero .eyebrow{display:block;margin-bottom:28px;color:#9FD3C4}
+.hero p.sub{font-size:1.25rem;line-height:1.6;color:rgba(255,255,255,.84);margin:30px 0 42px;max-width:580px}
+.hero .note{font-size:.88rem;color:rgba(255,255,255,.6);margin-top:18px}
+.cue{position:absolute;z-index:2;left:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.cue i{display:block;width:1px;height:38px;background:linear-gradient(rgba(255,255,255,.6),rgba(255,255,255,0));animation:cue 2.4s var(--ease) infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0);opacity:1}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+
+/* 01 problem: fixed heading on the left, numbered lines on the right */
+.split{display:grid;gap:40px}
+@media(min-width:900px){.split{grid-template-columns:.9fr 1.1fr;gap:80px}.split .sec-head{position:sticky;top:120px;align-self:start;margin-bottom:0}}
+.rows{border-top:1px solid var(--line)}
+.row-item{display:grid;grid-template-columns:58px 1fr 28px;gap:18px;align-items:start;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:28px 8px;font:inherit;color:inherit;cursor:pointer;transition:background .25s}
+.row-item .num{font-family:var(--sfont);font-style:italic;font-size:2.1rem;line-height:1;color:var(--accent)}
+.row-item .txt{font-size:1.14rem;line-height:1.5}
+.row-item .tick{width:28px;height:28px;border-radius:50%;border:1px solid #A9B3AF;display:grid;place-items:center;font-size:.82rem;font-weight:700;color:transparent;margin-top:2px;transition:background .2s,border-color .2s,color .2s}
+.row-item:hover{background:rgba(19,48,43,.035)}
+.row-item[aria-pressed="true"]{background:rgba(242,181,68,.12)}
+.row-item[aria-pressed="true"] .tick{background:var(--amber);border-color:var(--amber);color:var(--ink)}
+
+/* 02 how it works: a connected timeline */
+.timeline{display:grid;gap:44px}
+@media(min-width:900px){.timeline{grid-template-columns:repeat(3,1fr);gap:48px}}
+.tl-num{display:flex;align-items:center;gap:18px;font-family:var(--sfont);font-style:italic;font-size:4.4rem;line-height:.9;color:var(--accent)}
+.tl-num::after{content:"";flex:1;height:1px;background:var(--line);transform:translateY(6px)}
+.tl-step h3{font-size:1.28rem;margin-top:26px;letter-spacing:-.02em}
+.tl-step p{color:var(--muted);margin-top:12px}
+
+/* bridge: a quiet mid-page prompt */
+.bridge{padding:60px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg)}
+.bridge .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:22px 48px}
+.bridge p{font-family:var(--sfont);font-style:italic;font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.15;letter-spacing:-.01em;max-width:700px}
+.textlink{display:inline-flex;align-items:center;gap:10px;background:none;border:0;padding:0 0 5px;border-bottom:2px solid var(--amber);font:inherit;font-weight:500;font-size:1.05rem;color:var(--ink);cursor:pointer}
+.textlink::after{content:"\2192";transition:transform .2s}
+.textlink:hover::after{transform:translateX(3px)}
+
+/* 03 gains (unchanged layout) */
+.grid{display:grid;gap:16px}
+details.feat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+details.feat summary{list-style:none;cursor:pointer;padding:24px 26px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:start;border-radius:var(--radius)}
+details.feat summary::-webkit-details-marker{display:none}
+details.feat .idx{padding-top:4px}
+details.feat summary .s{color:var(--muted);font-size:.98rem;margin-top:6px;font-weight:400}
+details.feat summary .pm{flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:1.1rem;line-height:1;color:var(--ink);transition:transform .2s}
+details.feat[open] summary .pm{transform:rotate(45deg)}
+details.feat .d{padding:0 26px 24px 26px;color:var(--muted);max-width:720px}
+@media(min-width:640px){details.feat .d{padding-left:78px}}
+
+/* pricing (off for this idea, kept for the template) */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px}
+.card p{color:var(--muted);margin-top:10px}
+@media(min-width:760px){.grid.c3{grid-template-columns:repeat(3,1fr)}.grid.c2{grid-template-columns:repeat(2,1fr)}}
+.tier{display:flex;flex-direction:column;position:relative}
+.tier.hl{border:2px solid var(--accent)}
+.tier .tag{position:absolute;top:-12px;left:20px;background:var(--accent);color:#fff;font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:999px}
+.tier .price{font-size:2rem;font-weight:500;letter-spacing:-.03em;margin-top:12px;font-variant-numeric:tabular-nums}
+.tier .per{font-size:.9rem;color:var(--muted);font-weight:400}
+.tier ul{list-style:none;padding:0;margin:16px 0 22px;display:grid;gap:8px;flex:1}
+.tier li{padding-left:24px;position:relative;font-size:.97rem}
+.tier li::before{content:"\2713";position:absolute;left:0;color:var(--accent);font-weight:700}
+
+/* 04 sign-up band */
+.cta-band{background:var(--ink);color:#fff;padding:120px 0}
+.cta-band .kicker{color:#9FD3C4}
+.cta-band h2{color:#fff}
+.cta-grid{display:grid;gap:44px;align-items:center}
+@media(min-width:900px){.cta-grid{grid-template-columns:1fr 1fr;gap:80px}}
+.cta-line{font-size:1.18rem;line-height:1.6;color:rgba(255,255,255,.82);margin-top:26px;max-width:440px}
+.cta-card{background:var(--card);color:var(--ink);border-radius:24px;padding:38px;box-shadow:0 30px 70px rgba(0,0,0,.28)}
+.cta-card h3{font-size:1.35rem;font-weight:500;letter-spacing:-.02em}
+.cta-card .lead{color:var(--muted);margin-top:6px}
+.cta-card label,.cta-card .q-label{display:block;font-weight:500;font-size:.95rem;margin:0 0 10px}
+.cta-card input{width:100%;font:inherit;font-size:1.08rem;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:#fff;color:inherit}
+.cta-card .btn.amber{font-size:1.12rem;padding:18px 28px;margin-top:14px}
+.cta-card .micro{font-size:.9rem;color:var(--muted);margin-top:14px;text-align:center}
+.cta-card .err{font-size:.9rem;color:#b91c1c;margin-top:12px}
+.cta-card .fineprint{font-size:.8rem;color:var(--muted);margin-top:18px;line-height:1.5}
+.cta-card .q{margin-top:24px}
+.chipset{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:9px 15px;font:inherit;font-size:.95rem;cursor:pointer;transition:background .15s,border-color .15s}
+.opt:hover{border-color:var(--ink)}
+.opt[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cta-actions{display:flex;align-items:center;gap:18px;margin-top:28px;flex-wrap:wrap}
+.cta-actions .btn{margin-top:0}
+.linkbtn{background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;cursor:pointer;font:inherit}
+.pill{display:inline-block;font-size:.85rem;font-weight:500;background:color-mix(in srgb,var(--accent) 10%,white);color:var(--accent);padding:4px 12px;border-radius:999px;margin-bottom:10px}
+.preview-flag{font-size:.85rem;background:#fff7ed;border:1px solid #fdba74;color:#9a3412;border-radius:10px;padding:10px 12px;margin-top:16px}
+
+/* 05 FAQ: heading left, questions right */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);padding:24px 0}
+.faq summary{cursor:pointer;font-weight:500;font-size:1.12rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent);font-size:1.4rem;line-height:1;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--muted);margin-top:12px;max-width:620px}
+
+/* footer, overlay, consent */
+footer{border-top:1px solid var(--line);padding:40px 0 104px;font-size:.88rem;color:var(--muted)}
+footer details{margin-top:10px;max-width:640px}
+footer summary{cursor:pointer;text-decoration:underline}
+.overlay{position:fixed;inset:0;background:rgba(19,48,43,.5);display:none;place-items:center;padding:20px;z-index:50}
+.overlay.on{display:grid}
+.modal{background:var(--card);border-radius:24px;padding:32px;max-width:440px;width:100%}
+.modal p{color:var(--muted);margin:12px 0 22px}
+.modal .row{display:flex;gap:10px;flex-wrap:wrap}
+.consent{position:fixed;left:12px;right:12px;bottom:12px;background:var(--ink);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px 18px;display:none;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:.88rem;z-index:40;max-width:760px;margin:0 auto;transition:bottom .3s var(--ease)}
+.consent.on{display:flex}
+.consent button{font:inherit;font-weight:500;border:0;border-radius:999px;padding:8px 16px;cursor:pointer}
+.consent .yes{background:#fff;color:var(--ink)}
+.consent .no{background:transparent;color:#d1d5db;text-decoration:underline}
+
+/* phones: a slim sign-up bar after the hero */
+.mbar{display:none}
+@media(max-width:760px){
+  .mbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:35;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .4s var(--ease)}
+  .mbar.on{transform:none}
+  body.mbar-on .consent{bottom:84px}
+}
+
+/* scroll reveal (only when scripts run and motion is allowed) */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:640px){
+  section{padding:76px 0}
+  .hero{min-height:88svh;padding:120px 0 96px}
+  .hero .shade{background:linear-gradient(0deg,rgba(19,48,43,.92) 0%,rgba(19,48,43,.72) 55%,rgba(19,48,43,.55) 100%)}
+  .hero p.sub{font-size:1.1rem;margin:24px 0 32px}
+  .cue{display:none}
+  .sec-head{margin-bottom:34px}
+  .row-item{grid-template-columns:44px 1fr 26px;gap:12px;padding:22px 4px}
+  .row-item .num{font-size:1.7rem}
+  .row-item .txt{font-size:1.04rem}
+  .tl-num{font-size:3.4rem}
+  .bridge{padding:44px 0}
+  .cta-band{padding:76px 0}
+  .cta-card{padding:24px}
+  .top .btn.sm{padding:9px 14px;font-size:.85rem}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="nl-h">
+  <div class="modal">
+    <h2 id="nl-h"></h2>
+    <p id="nl-p"></p>
+    <div class="row">
+      <button class="btn" id="nl-go"></button>
+      <button class="btn ghost" id="nl-close">Not now</button>
+    </div>
+  </div>
+</div>
+
+<div class="consent" id="consent" role="region" aria-label="Analytics notice">
+  <span id="consent-text"></span>
+  <span>
+    <button class="no" id="consent-no" hidden>Decline</button>
+    <button class="yes" id="consent-yes">OK</button>
+  </span>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var S = SPEC, M = S.meta;
+  document.documentElement.classList.add("js");
+  window.dataLayer = window.dataLayer || [];
+  window.lpEvents = [];                                   // plain log of every event, handy when testing
+  function gtag() { window.dataLayer.push(arguments); }   // queues until Google Analytics loads
+  window._uxa = window._uxa || [];                        // Contentsquare (Hotjar) command queue; runs when its tag loads
+  var QUIET = { section_view: 1, scroll_depth: 1, page_ready: 1 };  // not sent to Contentsquare, to keep its list short
+  var mq = function (q) { return window.matchMedia ? window.matchMedia(q).matches : false; };
+  var calm = mq("(prefers-reduced-motion: reduce)");
+
+  /* ---------- helpers ---------- */
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      if (k === "text") n.textContent = attrs[k];
+      else if (k === "on") Object.keys(attrs.on).forEach(function (e) { n.addEventListener(e, attrs.on[e]); });
+      else if (attrs[k] !== false && attrs[k] != null) n.setAttribute(k, attrs[k]);
+    });
+    (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    return n;
+  }
+  // "*words*" in headings become the italic serif accent
+  function rich(t) {
+    return String(t || "").split("*").map(function (p, i) { return i % 2 ? el("em", { class: "serif", text: p }) : (p ? document.createTextNode(p) : null); });
+  }
+  function track(event, data) {
+    var p = { event: event, idea_id: M.ideaId, run: M.run };
+    Object.keys(data || {}).forEach(function (k) { if (data[k] !== "" && data[k] != null) p[k] = data[k]; });
+    window.lpEvents.push(p);
+    var params = {}; Object.keys(p).forEach(function (k) { if (k !== "event") params[k] = p[k]; });
+    gtag("event", event, params);
+    if (!QUIET[event]) {
+      // sent as a dynamic variable so recordings and heatmaps can be filtered by it
+      var detail = data && (data.tier || data.option || data.feature || data.location || data.question);
+      window._uxa.push(["trackDynamicVariable", { key: event, value: String(detail || "yes") }]);
+    }
+  }
+  var secNo = 0;
+  function kicker(id) {
+    var k = (S[id] || {}).kicker; if (!k) return null;
+    secNo += 1;
+    return el("div", { class: "kicker" }, [el("span", { class: "n", text: (secNo < 10 ? "0" : "") + secNo }), el("span", { text: k })]);
+  }
+  function head(id, heading, intro) {
+    return el("div", { class: "sec-head rv" }, [kicker(id), el("h2", null, rich(heading)), intro ? el("p", { text: intro }) : null]);
+  }
+  function section(id, cls, heading, intro, body) {
+    return el("section", { id: id, class: cls || "" }, [el("div", { class: "wrap" }, [head(id, heading, intro), body])]);
+  }
+  function goTo(id) { var t = document.getElementById(id); if (t) t.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "start" }); }
+
+  /* ---------- UTM capture (passed to the form as hidden fields) ---------- */
+  var qs = new URLSearchParams(location.search), utm = {};
+  ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(function (k) { if (qs.get(k)) utm[k] = qs.get(k); });
+  var chosenTier = "";
+
+  /* ---------- page meta + theme ---------- */
+  document.title = M.title || M.concept;
+  var md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute("content", M.description || "");
+  (function applyTheme() {
+    var Th = S.theme || {}, root = document.documentElement.style;
+    function lum(hex) {   // relative luminance of a #rgb or #rrggbb colour, or null if not a hex colour
+      var m = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.exec((hex || "").trim()); if (!m) return null;
+      var h = m[1].length === 3 ? m[1].replace(/./g, "$&$&") : m[1];
+      var c = [0, 2, 4].map(function (i) { var v = parseInt(h.substr(i, 2), 16) / 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+      return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+    }
+    function contrast(a, b) { var hi = Math.max(a, b), lo = Math.min(a, b); return (hi + 0.05) / (lo + 0.05); }
+    var la = lum(Th.accent);
+    if (la !== null) root.setProperty("--accent", Th.accent);
+    var lt = lum(Th.text);          // text must be readable on white, or the default is kept
+    if (lt !== null && contrast(lt, 1) >= 7) root.setProperty("--ink", Th.text);
+    var ls = lum(Th.tint);          // tint must stay light enough for the text to read on it
+    if (ls !== null && ls >= 0.8) root.setProperty("--soft", Th.tint);
+    var fam = [];
+    function okFont(f) { return /^[A-Za-z0-9 ]{2,40}$/.test(f || ""); }
+    function gf(f, axis) { return "family=" + encodeURIComponent(f).replace(/%20/g, "+") + ":" + axis; }
+    if (okFont(Th.headingFont)) { fam.push(gf(Th.headingFont, "wght@300;400;500;600;700")); root.setProperty("--hfont", '"' + Th.headingFont + '", system-ui, sans-serif'); }
+    if (okFont(Th.bodyFont)) { if (Th.bodyFont !== Th.headingFont) fam.push(gf(Th.bodyFont, "wght@300;400;500;600;700")); root.setProperty("--bfont", '"' + Th.bodyFont + '"'); document.body.classList.add("bfont"); }
+    if (okFont(Th.monoFont)) { fam.push(gf(Th.monoFont, "wght@400;500")); root.setProperty("--mono", '"' + Th.monoFont + '", ui-monospace, monospace'); }
+    if (okFont(Th.serifFont)) { fam.push(gf(Th.serifFont, "ital@0;1")); root.setProperty("--sfont", '"' + Th.serifFont + '", Georgia, serif'); }
+    if (fam.length) {
+      var l = document.createElement("link"); l.rel = "stylesheet";
+      l.href = "https://fonts.googleapis.com/css2?" + fam.join("&") + "&display=swap";
+      document.head.appendChild(l);
+    }
+  })();
+
+  var app = document.getElementById("app");
+
+  /* ---------- header ---------- */
+  var H = S.hero, heroTarget = (H.ctaTarget === "pricing" && S.pricing.enabled) ? "pricing" : "form";
+  function ctaClick(where) { track("cta_click", { location: where, assumption_id: H.assumptionId }); goTo(heroTarget); }
+  function ctaBtn(label, where, cls) {
+    return el("button", { class: "btn" + (cls ? " " + cls : ""), text: label, on: { click: function () { ctaClick(where); } } });
+  }
+  var bar = el("div", { class: "progress", "aria-hidden": "true" });
+  var top = el("header", { class: "top over" }, [bar, el("div", { class: "wrap" }, [el("div", { class: "brand", text: M.concept }), ctaBtn(H.cta, "header", "sm")])]);
+  app.appendChild(top);
+
+  /* ---------- hero: full-bleed looping video under a deep green shade ---------- */
+  // Phones get the lighter encode; reduced-motion or data-saver visitors get the still frame.
+  var V = H.video || {}, bg = el("div", { class: "bg", "aria-hidden": "true" }), heroVid = null;
+  var small = mq("(max-width: 760px)");
+  var saver = navigator.connection && navigator.connection.saveData;
+  if (V.mp4) {
+    bg.style.setProperty("--pos", small ? (V.mobilePosition || "70% 50%") : (V.position || "60% 50%"));
+    if (calm || saver) bg.appendChild(el("img", { src: V.poster, alt: "" }));
+    else {
+      var webm = small && V.mobileWebm ? V.mobileWebm : V.webm, mp4 = small && V.mobileMp4 ? V.mobileMp4 : V.mp4;
+      heroVid = el("video", { autoplay: "", muted: "", loop: "", playsinline: "", preload: "auto", poster: V.poster || false }, [
+        webm ? el("source", { src: webm, type: "video/webm" }) : null,
+        el("source", { src: mp4, type: "video/mp4" })
+      ]);
+      heroVid.muted = true; heroVid.playsInline = true;
+      bg.appendChild(heroVid);
+    }
+  } else if (H.image && H.image.url) {
+    bg.appendChild(el("img", { src: H.image.url, alt: H.image.alt || "" }));
+  }
+  var hero = el("section", { class: "hero", id: "top" }, [bg, el("div", { class: "shade" }),
+    el("div", { class: "wrap" }, [el("div", { class: "inner" }, [
+      H.eyebrow ? el("span", { class: "eyebrow rv", text: H.eyebrow }) : null,
+      el("h1", { class: "rv" }, rich(H.headline)),
+      el("p", { class: "sub rv", text: H.subheadline }),
+      el("div", { class: "rv" }, [ctaBtn(H.cta, "hero", "amber lg"), H.note ? el("p", { class: "note", text: H.note }) : null])
+    ])]),
+    H.scrollCue ? el("div", { class: "cue", "aria-hidden": "true" }, [H.scrollCue, el("i")]) : null
+  ]);
+  app.appendChild(hero);
+  if (heroVid) { var pp = heroVid.play(); if (pp && pp.catch) pp.catch(function () {}); }
+
+  /* ---------- 01 problem: fixed heading left, numbered lines right ---------- */
+  var P = S.problem;
+  if (P.enabled) {
+    var rows = el("div", { class: "rows" }, P.items.map(function (it, i) {
+      var b = el("button", { class: "row-item rv", type: "button", "aria-pressed": "false" }, [
+        el("span", { class: "num", "aria-hidden": "true", text: (i < 9 ? "0" : "") + (i + 1) }),
+        el("span", { class: "txt", text: it.text }),
+        el("span", { class: "tick", "aria-hidden": "true", text: "✓" })
+      ]);
+      b.addEventListener("click", function () {
+        var on = b.getAttribute("aria-pressed") !== "true";
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+        track("problem_select", { option: it.id, selected: on, assumption_id: P.assumptionId });
+      });
+      return b;
+    }));
+    app.appendChild(el("section", { id: "problem" }, [el("div", { class: "wrap" }, [el("div", { class: "split" }, [head("problem", P.heading, P.intro), rows])])]));
+  }
+
+  /* ---------- 02 how it works: a connected timeline ---------- */
+  if (S.how.enabled) {
+    app.appendChild(section("how", "alt", S.how.heading, "", el("div", { class: "timeline" }, S.how.steps.map(function (s, i) {
+      return el("div", { class: "tl-step rv" }, [el("div", { class: "tl-num", text: (i < 9 ? "0" : "") + (i + 1) }), el("h3", { text: s.title }), el("p", { text: s.text })]);
+    }))));
+  }
+
+  /* ---------- bridge: a quiet mid-page prompt ---------- */
+  var B = S.bridge || {};
+  if (B.enabled) {
+    app.appendChild(el("div", { class: "bridge" }, [el("div", { class: "wrap rv" }, [
+      el("p", { text: B.text }),
+      el("button", { class: "textlink", type: "button", text: B.cta, on: { click: function () { ctaClick("bridge"); } } })
+    ])]));
+  }
+
+  /* ---------- 03 gains (each expand is an event) ---------- */
+  if (S.features.enabled) {
+    app.appendChild(section("features", "alt", S.features.heading, "", el("div", { class: "grid" }, S.features.items.map(function (f, fi) {
+      var d = el("details", { class: "feat rv" }, [
+        el("summary", null, [el("span", { class: "idx", text: (fi < 9 ? "0" : "") + (fi + 1) }), el("div", null, [el("h3", { text: f.title }), el("div", { class: "s", text: f.summary })]), el("span", { class: "pm", "aria-hidden": "true", text: "+" })]),
+        el("div", { class: "d", text: f.detail })
+      ]);
+      d.addEventListener("toggle", function () { if (d.open) track("feature_expand", { feature: f.id, assumption_id: f.assumptionId }); });
+      return d;
+    }))));
+  }
+
+  /* ---------- benefits ---------- */
+  if (S.benefits.enabled) {
+    app.appendChild(section("benefits", "", S.benefits.heading, "", el("div", { class: "grid c3" }, S.benefits.items.map(function (b) {
+      return el("div", { class: "card rv" }, [el("h3", { text: b.title }), el("p", { text: b.text })]);
+    }))));
+  }
+
+  /* ---------- pricing (honest fake door) ---------- */
+  var PR = S.pricing, overlay = document.getElementById("overlay");
+  function closeModal() { overlay.classList.remove("on"); }
+  if (PR.enabled) {
+    var cols = PR.tiers.length >= 3 ? "c3" : "c2";
+    app.appendChild(section("pricing", "", PR.heading, PR.note, el("div", { class: "grid " + cols }, PR.tiers.map(function (t) {
+      return el("div", { class: "card tier" + (t.highlight ? " hl" : "") }, [
+        t.highlight ? el("span", { class: "tag", text: "Most popular" }) : null,
+        el("h3", { text: t.name }),
+        t.blurb ? el("p", { text: t.blurb }) : null,
+        el("div", { class: "price" }, [t.price + " ", el("span", { class: "per", text: t.period || "" })]),
+        el("ul", null, (t.features || []).map(function (x) { return el("li", { text: x }); })),
+        el("button", { class: "btn block" + (t.highlight ? "" : " ghost"), text: t.cta || "Choose " + t.name, on: { click: function () {
+          chosenTier = t.id;
+          track("pricing_click", { tier: t.id, assumption_id: PR.assumptionId });
+          document.getElementById("nl-h").textContent = S.notLive.heading.replace("{tier}", t.name);
+          document.getElementById("nl-p").textContent = S.notLive.text.replace("{tier}", t.name);
+          document.getElementById("nl-go").textContent = S.notLive.cta;
+          overlay.classList.add("on");
+          document.getElementById("nl-go").focus();
+        } } })
+      ]);
+    }))));
+    document.getElementById("nl-go").addEventListener("click", function () {
+      track("pricing_continue", { tier: chosenTier, assumption_id: PR.assumptionId });
+      closeModal(); renderForm(); goTo("form");
+    });
+    document.getElementById("nl-close").addEventListener("click", function () { track("pricing_dismiss", { tier: chosenTier }); closeModal(); });
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
+  }
+
+  /* ---------- 04 sign-up band: email first, optional profile questions after ---------- */
+  var F = S.form, card = el("div", { class: "cta-card rv", id: "formbox" }), submitted = false, email = "";
+  function post(fields) {
+    // every post carries the email, so the optional answers join the same lead in Formspree
+    if (!F.formspreeId) return Promise.resolve();
+    var data = new FormData();
+    data.set("email", email); data.set("idea_id", M.ideaId); data.set("run", String(M.run)); data.set("tier", chosenTier); data.set("concept", M.concept);
+    Object.keys(utm).forEach(function (k) { data.set(k, utm[k]); });
+    Object.keys(fields).forEach(function (k) { data.set(k, fields[k]); });
+    return fetch("https://formspree.io/f/" + encodeURIComponent(F.formspreeId), { method: "POST", body: data, headers: { Accept: "application/json" } })
+      .then(function (r) { if (!r.ok) throw new Error("not ok"); });
+  }
+  function renderForm() {                                 // step 1: email only
+    if (!F.enabled || submitted) return;
+    var err = el("div", { class: "err", role: "alert" });
+    var input = el("input", { id: "f-email", name: "email", type: "email", required: "", autocomplete: "email", placeholder: F.emailPlaceholder || "" });
+    var btn = el("button", { class: "btn amber block", type: "submit", text: F.cta });
+    var started = false;
+    input.addEventListener("focus", function () { if (!started) { started = true; track("form_start", {}); } });
+    var form = el("form", { on: { submit: function (e) {
+      e.preventDefault(); err.textContent = "";
+      email = input.value.trim(); btn.disabled = true;
+      post({ stage: "email" }).then(function () {
+        submitted = true;
+        track("form_submit", { tier: chosenTier, assumption_id: F.assumptionId });   // the lead
+        renderFollowUp();
+      }).catch(function () { btn.disabled = false; err.textContent = F.errorText; track("form_error", {}); });
+    } } }, [el("label", { for: "f-email", text: F.emailLabel }), input, btn, err]);
+    var kids = [];
+    if (chosenTier) kids.push(el("span", { class: "pill", text: "Plan: " + tierName() }));
+    kids.push(form);
+    if (F.micro) kids.push(el("p", { class: "micro", text: F.micro }));
+    if (!F.formspreeId) kids.push(el("div", { class: "preview-flag", text: "Preview mode: this form is not connected and sends nothing. Add a Formspree form ID in SPEC.form.formspreeId before going live." }));
+    if (F.consentLine) kids.push(el("p", { class: "fineprint", text: F.consentLine }));
+    card.replaceChildren.apply(card, kids);
+  }
+  function renderFollowUp() {                             // step 2: optional taps
+    var U = F.followUp || {}, answers = {}, touched = {};
+    function note(name) { if (!touched[name]) { touched[name] = 1; track("profile_answer", { question: name }); } }
+    var qs = (U.questions || []).map(function (q) {
+      var box;
+      if (q.type === "chips") {
+        answers[q.name] = [];
+        box = el("div", { class: "chipset", role: "group", "aria-label": q.label }, q.options.map(function (o) {
+          var b = el("button", { class: "opt", type: "button", "aria-pressed": "false", text: o });
+          b.addEventListener("click", function () {
+            var on = b.getAttribute("aria-pressed") !== "true";
+            if (!q.multi) { Array.prototype.forEach.call(box.children, function (c) { c.setAttribute("aria-pressed", "false"); }); answers[q.name] = []; }
+            b.setAttribute("aria-pressed", on ? "true" : "false");
+            answers[q.name] = answers[q.name].filter(function (x) { return x !== o; });
+            if (on) answers[q.name].push(o);
+            note(q.name);
+          });
+          return b;
+        }));
+      } else {
+        box = el("input", { type: "text", placeholder: q.placeholder || "", "aria-label": q.label });
+        box.addEventListener("change", function () { answers[q.name] = box.value.trim(); if (box.value.trim()) note(q.name); });
+      }
+      return el("div", { class: "q" }, [el("div", { class: "q-label", text: q.label }), box]);
+    });
+    var err = el("div", { class: "err", role: "alert" });
+    var done = el("button", { class: "btn", type: "button", text: U.done || "Done" });
+    var skip = el("button", { class: "linkbtn", type: "button", text: U.skip || "Skip" });
+    function finish() { card.replaceChildren(el("h3", { text: U.thanksHeading || S.thanks.heading }), el("p", { class: "lead", text: U.thanksText || S.thanks.text })); }
+    done.addEventListener("click", function () {
+      var out = { stage: "profile" };
+      Object.keys(answers).forEach(function (k) { out[k] = Array.isArray(answers[k]) ? answers[k].join(", ") : answers[k]; });
+      done.disabled = true;
+      post(out).then(function () { track("profile_submit", { answered: Object.keys(touched).length }); finish(); })
+        .catch(function () { done.disabled = false; err.textContent = F.errorText; track("form_error", { stage: "profile" }); });
+    });
+    skip.addEventListener("click", function () { track("profile_skip", {}); finish(); });
+    card.replaceChildren.apply(card, [el("h3", { text: U.heading || S.thanks.heading }), el("p", { class: "lead", text: U.intro || "" })].concat(qs, [el("div", { class: "cta-actions" }, [done, skip]), err]));
+  }
+  function tierName() { var t = (PR.tiers || []).filter(function (x) { return x.id === chosenTier; })[0]; return t ? t.name : ""; }
+  if (F.enabled) {
+    var copy = el("div", { class: "cta-copy rv" }, [kicker("form"), el("h2", null, rich(F.heading)),
+      F.line ? el("p", { class: "cta-line", text: F.line }) : null]);
+    app.appendChild(el("section", { id: "form", class: "cta-band" }, [el("div", { class: "wrap" }, [el("div", { class: "cta-grid" }, [copy, card])])]));
+    renderForm();
+  }
+
+  /* ---------- 05 FAQ: heading left, questions right ---------- */
+  if (S.faq.enabled) {
+    var list = el("div", { class: "faq" }, S.faq.items.map(function (q, i) {
+      var d = el("details", { class: "rv" }, [el("summary", { text: q.q }), el("p", { text: q.a })]);
+      d.addEventListener("toggle", function () { if (d.open) track("faq_open", { question: i + 1 }); });
+      return d;
+    }));
+    app.appendChild(el("section", { id: "faq" }, [el("div", { class: "wrap" }, [el("div", { class: "split" }, [head("faq", S.faq.heading, ""), list])])]));
+  }
+
+  /* ---------- footer ---------- */
+  var Ft = S.footer;
+  app.appendChild(el("footer", null, [el("div", { class: "wrap" }, [
+    el("div", null, ["© " + new Date().getFullYear() + " " + Ft.company + (Ft.contact ? " · " : ""), Ft.contact ? el("a", { href: "mailto:" + Ft.contact, text: Ft.contact, style: "color:inherit" }) : null]),
+    el("details", null, [el("summary", { text: "Privacy" }), el("p", { style: "margin-top:8px", text: Ft.privacy })])
+  ])]));
+
+  /* ---------- phones: slim sign-up bar after the hero ---------- */
+  var mbar = el("div", { class: "mbar" }, [el("button", { class: "btn amber block", type: "button", text: H.cta, on: { click: function () { ctaClick("sticky"); } } })]);
+  document.body.appendChild(mbar);
+
+  /* ---------- motion: reveal on scroll, header state, progress line, sticky bar ---------- */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll(".rv"));
+  if (calm || !("IntersectionObserver" in window)) revealEls.forEach(function (n) { n.classList.add("in"); });
+  else {
+    // stagger siblings that enter together
+    revealEls.forEach(function (n) {
+      var sibs = Array.prototype.filter.call(n.parentNode.children, function (c) { return c.classList.contains("rv"); });
+      n.style.transitionDelay = Math.min(sibs.indexOf(n), 5) * 90 + "ms";
+    });
+    var rio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); rio.unobserve(en.target); } });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    revealEls.forEach(function (n) { rio.observe(n); });
+  }
+  var formSec = document.getElementById("form"), formInView = false;
+  if (formSec && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (en) { formInView = en[0].isIntersecting; onScroll(); }, { threshold: 0.05 }).observe(formSec);
+  }
+  var ticking = false;
+  function onScroll() {
+    var y = window.pageYOffset || document.documentElement.scrollTop, h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.setProperty("--p", max > 0 ? Math.min(1, y / max).toFixed(4) : 0);
+    var heroEnd = hero.offsetHeight - 80;
+    top.classList.toggle("over", y < heroEnd);
+    var showBar = y > heroEnd && !formInView;
+    mbar.classList.toggle("on", showBar);
+    document.body.classList.toggle("mbar-on", showBar);
+    ticking = false;
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+
+  /* ---------- view + scroll-depth tracking ---------- */
+  if ("IntersectionObserver" in window) {
+    var seen = {};
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && !seen[en.target.id]) { seen[en.target.id] = 1; track("section_view", { section: en.target.id }); }
+      });
+    }, { threshold: 0.35 });
+    ["problem", "how", "features", "benefits", "pricing", "form", "faq"].forEach(function (id) { var n = document.getElementById(id); if (n) io.observe(n); });
+  }
+  var marks = [25, 50, 75, 100], hit = {};
+  window.addEventListener("scroll", function () {
+    var h = document.documentElement, max = h.scrollHeight - h.clientHeight; if (max <= 0) return;
+    var pct = (h.scrollTop || document.body.scrollTop) / max * 100;
+    marks.forEach(function (m) { if (pct >= m - 1 && !hit[m]) { hit[m] = 1; track("scroll_depth", { percent: m }); } });
+  }, { passive: true });
+
+  /* ---------- tracking loader + consent ---------- */
+  var T = S.tracking || {}, loaded = false;
+  function loadTracking() {
+    if (loaded) return; loaded = true;
+    if (T.ga4Id) {
+      gtag("js", new Date()); gtag("config", T.ga4Id);
+      var g = document.createElement("script"); g.async = true;
+      g.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(T.ga4Id);
+      document.head.appendChild(g);
+    }
+    if (T.csqTagId) {
+      var cs = document.createElement("script"); cs.async = true;
+      cs.src = "https://t.contentsquare.net/uxa/" + encodeURIComponent(T.csqTagId) + ".js";
+      document.head.appendChild(cs);
+    }
+  }
+  if (T.ga4Id || T.csqTagId) {
+    var cbar = document.getElementById("consent"), optin = T.consent === "optin";
+    document.getElementById("consent-text").textContent = optin
+      ? "We'd like to use analytics to understand how this page is used."
+      : "This page uses analytics to understand how it is used. See Privacy below.";
+    document.getElementById("consent-yes").textContent = optin ? "Accept" : "OK";
+    document.getElementById("consent-no").hidden = !optin;
+    document.getElementById("consent-yes").addEventListener("click", function () { cbar.classList.remove("on"); loadTracking(); });
+    document.getElementById("consent-no").addEventListener("click", function () { cbar.classList.remove("on"); });
+    cbar.classList.add("on");
+    if (!optin) loadTracking();
+  }
+  track("page_ready", utm);
+})();
+</script>
+</body>
+</html>
