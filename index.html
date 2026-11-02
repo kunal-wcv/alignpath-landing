@@ -34,6 +34,7 @@ const SPEC = {
   tracking: {
     ga4Id: "G-7HBHT4F2PK",
     csqTagId: "5d063e84c32b0",
+    metaPixelId: "1414165966492329",
     consent: "notice"
   },
   hero: {
@@ -151,7 +152,7 @@ const SPEC = {
   footer: {
     company: "AlignPath",
     contact: "talk@withcareventures.com",
-    privacy: "This page uses analytics to understand how visitors use it, including anonymised session recordings. If you sign up, we store the details you give us so we can contact you about AlignPath. Ask us to see or delete your data at any time."
+    privacy: "This page uses analytics to understand how visitors use it, including anonymised session recordings, and Meta's advertising pixel to measure sign-ups from our ads. If you sign up, we store the details you give us so we can contact you about AlignPath. Ask us to see or delete your data at any time."
   }
 };
 </script>
@@ -409,6 +410,8 @@ footer summary{cursor:pointer;text-decoration:underline}
     window.lpEvents.push(p);
     var params = {}; Object.keys(p).forEach(function (k) { if (k !== "event") params[k] = p[k]; });
     gtag("event", event, params);
+    // Meta Pixel: the email sign-up is the conversion the ads optimise for
+    if (event === "form_submit" && window.fbq) window.fbq("track", "Lead", { content_name: "AlignPath waitlist" });
     if (!QUIET[event]) {
       // sent as a dynamic variable so recordings and heatmaps can be filtered by it
       var detail = data && (data.tier || data.option || data.feature || data.location || data.question);
@@ -766,8 +769,20 @@ footer summary{cursor:pointer;text-decoration:underline}
       cs.src = "https://t.contentsquare.net/uxa/" + encodeURIComponent(T.csqTagId) + ".js";
       document.head.appendChild(cs);
     }
+    if (T.metaPixelId) {
+      // Meta Pixel base code
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      window.fbq("init", T.metaPixelId);
+      window.fbq("track", "PageView");
+    }
   }
-  if (T.ga4Id || T.csqTagId) {
+  if (T.ga4Id || T.csqTagId || T.metaPixelId) {
     var cbar = document.getElementById("consent"), optin = T.consent === "optin";
     document.getElementById("consent-text").textContent = optin
       ? "We'd like to use analytics to understand how this page is used."
